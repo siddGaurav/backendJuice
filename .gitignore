@@ -1,0 +1,11 @@
+node_modules/
+.env
+dist
+.vscode
+
+Archive.zip
+Dockerfile
+gaurav_ecom_backup.sql
+juicelookbk.zip
+dist/
+build/
