@@ -1,11 +1,22 @@
+# dependencies
 node_modules/
-.env
-dist
-.vscode
 
-Archive.zip
-Dockerfile
-gaurav_ecom_backup.sql
-juicelookbk.zip
+# env files
+.env
+
+# build output
 dist/
 build/
+
+# system files
+.DS_Store
+.vscode/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# archives / backups
+*.zip
+*.sql
