@@ -12,6 +12,9 @@ import { swaggerSpec } from "./config/swager.js";
 
 import cors from 'cors';
 import invoiceRouter from './routes/invoiceRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 
 
 
@@ -23,6 +26,12 @@ const limits = rateLimit({
 // import invoiceRouter from './routes/invoiceRoutes.js';
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "../build")));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 

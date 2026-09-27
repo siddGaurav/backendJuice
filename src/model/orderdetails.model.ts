@@ -81,10 +81,6 @@ OrderDetails.init(
 // });
 
 
-OrderDetails.belongsTo(Product, {
-    foreignKey: "product_id",
-});
-
 Product.hasMany(OrderDetails, {
     foreignKey: "product_id",
 });

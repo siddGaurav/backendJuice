@@ -390,3 +390,58 @@ export async function OrderGet(req: RequestWithUser, res: Response, next: NextFu
   }
 
 }
+
+
+export async function OrderGetDetails(
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const user_id = req.user?.id;
+    console.log(user_id,"ye aarhi he")
+
+    if (!user_id) {
+      return res.status(400).json({
+        status: "failed",
+        message: "User id is required",
+      });
+    }
+
+   const OrderData = await Order.findOne({
+    where: {
+        user_id,
+    },
+
+    include: [
+        {
+            model: OrderDetails,
+            as: "order_details",
+        },
+    ],
+
+    order: [["createdAt", "DESC"]],
+});
+
+    if (!OrderData) {
+      return res.status(404).json({
+        status: "failed",
+        message: "Order not found",
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      message: "Latest order fetched successfully",
+      data: OrderData,
+    });
+
+  } catch (err) {
+    console.error("OrderGet Error:", err);
+
+    return res.status(500).json({
+      status: "failed",
+      message: "Something went wrong",
+    });
+  }
+}

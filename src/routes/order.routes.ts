@@ -1,5 +1,5 @@
 import express from "express";
-import { OrderData, OrderGet } from "../controller/order.controller.js";
+import { OrderData, OrderGet, OrderGetDetails } from "../controller/order.controller.js";
 import { requireAuth } from "../middleware/auth.js";
 
 const orderRouter = express.Router();
@@ -47,5 +47,6 @@ orderRouter.post("/", OrderData);
  *         description: List of orders
  */
 orderRouter.get("/", OrderGet);
+orderRouter.get("/details",OrderGetDetails)
 
 export default orderRouter;

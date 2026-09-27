@@ -4,6 +4,7 @@ import { User } from "./user.model.js";
 import { OrderDetails } from "./orderdetails.model.js";
 import { Product } from "./product.model.js";
 
+
 // ✅ Corrected TypeScript interface
 interface OrderAttributes {
     id?: number;
@@ -134,11 +135,12 @@ Order.init(
 );
 
 // ✅ Association
-Order.belongsTo(User, { foreignKey: "user_id", as: "user", targetKey: "id" });
+// Order.belongsTo(User, { foreignKey: "user_id", as: "user", targetKey: "id" });
 Order.hasMany(OrderDetails, {
     foreignKey: "order_id",
     as: "order_details",
 });
+
 
 // OrderDetails.belongsTo(Product, {
 //     foreignKey: "product_id",
