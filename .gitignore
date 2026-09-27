@@ -5,8 +5,8 @@ node_modules/
 .env
 
 # build output
-dist/
-build/
+# dist/
+# build/
 
 # system files
 .DS_Store
